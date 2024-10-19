@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Clicker 🤠</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #emoji-container {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emoji Clicker 🤠</h1>
+    <div id="emoji-container"></div>
+    <div id="score">Pontos: 0</div>
+    <button id="reset-button">Resetar</button>
+
+    <script>
+        let score = 0; // Inicializando a pontuação
+        let multiplier = 1; // Inicializando o multiplicador
+        const emojiContainer = document.getElementById("emoji-container");
+        const scoreDisplay = document.getElementById("score");
+        const resetButton = document.getElementById("reset-button");
+
+        // Função para adicionar emojis
+        function addEmojis() {
+            for (let i = 0; i < multiplier; i++) {
+                const emoji = document.createElement("span");
+                emoji.textContent = "🤠";
+                emojiContainer.appendChild(emoji);
+            }
+            score += multiplier; // Aumenta a pontuação
+            scoreDisplay.textContent = `Pontos: ${score}`; // Atualiza a exibição da pontuação
+            multiplier++; // Aumenta o multiplicador a cada clique
+        }
+
+        // Adiciona um evento de clique à tela
+        document.body.addEventListener("click", addEmojis);
+
+        // Função para resetar o jogo
+        resetButton.addEventListener("click", () => {
+            score = 0;
+            multiplier = 1;
+            emojiContainer.innerHTML = ""; // Limpa os emojis
+            scoreDisplay.textContent = `Pontos: ${score}`; // Reseta a pontuação
+        });
+    </script>
+</body>
+</html>
